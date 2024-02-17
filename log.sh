@@ -2,8 +2,6 @@
 
 Green="\e[32m"
 Red="\033[0;31m"
-Blue='\033[0;34m'
-NC='\033[0m'
 
 mapfile -t NGINX_CONTAINERS < <(sudo docker ps --filter ancestor=nginx:latest --quiet) 
 if (( ${#NGINX_CONTAINERS[@]} == 0 )); then

@@ -5,7 +5,7 @@ networks=$(sudo docker network ls)
 Green="\e[32m"
 Red="\033[0;31m"
 Blue='\033[0;34m'
-NC='\033[0m'
+# NC='\033[0m'
 
 if [ "$1" = "stop" ]; then
     echo "${Red}Stopping API Server and removing containers"

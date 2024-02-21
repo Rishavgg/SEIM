@@ -1,0 +1,72 @@
+[32mOwner has execute permission for run.sh[0m
+[32mOwner has execute permission for log.sh[0m
+[32mOwner has execute permission for filter.sh[0m
+[32mThe 'nginx_network' network already exists.
+[32mstarting server build
+#0 building with "default" instance using docker driver
+
+#1 [server internal] load build definition from Dockerfile
+#1 transferring dockerfile: 151B done
+#1 DONE 0.0s
+
+#2 [server internal] load metadata for docker.io/library/node:latest
+#2 DONE 0.9s
+
+#3 [server internal] load .dockerignore
+#3 transferring context: 74B done
+#3 DONE 0.0s
+
+#4 [server 1/5] FROM docker.io/library/node:latest@sha256:65998e325b06014d4f1417a8a6afb1540d1ac66521cca76f2221a6953947f9ee
+#4 DONE 0.0s
+
+#5 [server internal] load build context
+#5 transferring context: 3.34kB done
+#5 DONE 0.0s
+
+#6 [server 2/5] WORKDIR /var/www/app
+#6 CACHED
+
+#7 [server 3/5] COPY . /var/www/app/
+#7 CACHED
+
+#8 [server 4/5] RUN npm i
+#8 CACHED
+
+#9 [server 5/5] RUN npm run build
+#9 CACHED
+
+#10 [server] exporting to image
+#10 exporting layers done
+#10 writing image sha256:69feab8b256ccaacdda500ccd30f554acfbaaf1e9f20ea2cad6dabdb09607e93 done
+#10 naming to docker.io/library/node:latest done
+#10 DONE 0.0s
+
+#11 [core internal] load build definition from Dockerfile
+#11 transferring dockerfile: 95B done
+#11 DONE 0.0s
+
+#12 [core internal] load metadata for docker.io/library/nginx:latest
+#12 DONE 0.9s
+
+#13 [core internal] load .dockerignore
+#13 transferring context: 2B done
+#13 DONE 0.0s
+
+#14 [core 1/2] FROM docker.io/library/nginx:latest@sha256:c26ae7472d624ba1fafd296e73cecc4f93f853088e6a9c13c0d52f6ca5865107
+#14 DONE 0.0s
+
+#15 [core internal] load build context
+#15 transferring context: 32B done
+#15 DONE 0.0s
+
+#16 [core 2/2] COPY nginx.conf /etc/nginx/nginx.conf.d
+#16 CACHED
+
+#17 [core] exporting to image
+#17 exporting layers done
+#17 writing image sha256:848f11de8ceac2319728f233dc9f3e914d495c6db8b35d274daf07ec93ff6c4c done
+#17 naming to docker.io/library/nginx:latest done
+#17 DONE 0.0s
+[32mstarting server in deattached mode
+\033[0;31mNo NGINX container found.
+[?1049h[1;45r(B[m[4l[?7h[H[2J[45;213H[H[2J[25;102H[H[2J[24;102H[H[2J[25;102H

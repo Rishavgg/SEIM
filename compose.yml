@@ -19,12 +19,39 @@ services:
     container_name: nginx_app
     depends_on:
       - server
+      - mongodb
     volumes:
       - ./core/nginx.conf:/etc/nginx/nginx.conf:ro
     networks:
       - nginx_network
     ports:
       - 80:80
+  fluentd:
+    image: fluentd:latest
+    container_name: fluentd_app
+    build:
+      context: ./fluentd
+      dockerfile: Dockerfile
+    depends_on:
+      - mongodb
+    networks:
+      - nginx_network
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"
+    volumes:
+      - ./fluentd/fluent.conf:/fluentd/etc/fluent.conf
+      - ./log/nginx.log:/nginx.log
+  mongodb:
+    image: mongo:latest
+    container_name: mongo_app
+    networks:
+      - nginx_network
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
 
 networks:
   nginx_network:

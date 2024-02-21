@@ -4,6 +4,17 @@ Green="\e[32m"
 Red="\033[0;31m"
 NC='\033[0m'
 
+if [ "$1" = "stop" ]; then
+    echo "${Red}Stopping API containers and closing all pipelines${NC}"
+    sudo docker compose down --rmi local
+    pkill -f ./log.sh
+    pkill -f watch
+    echo "${Red}clearing log files for fresh start${NC}"
+    truncate -s 0 ./log/nginx.log
+    truncate -s 0 ./log/filter.log
+    exit 0
+fi
+
 if [ "$(stat -c %A run.sh | sed 's/...\(.\).\+/\1/')" = "x" ]; then
   echo "${Green}Owner has execute permission for run.sh${NC}"
 else
@@ -29,14 +40,12 @@ fi
 
 ./log.sh &
 
-cd ./log || exit; watch -tn20 ./filter.sh nginx.log &
+cd ./log || exit; watch -tn1 ./filter.sh nginx.log &
 
 cd ..
 
-if [ "$1" = "stop" ]; then
-    echo "${Red}Stopping API containers and closing all pipelines${NC}"
-    sudo docker compose down --rmi local
-    pkill -f ./log.sh
-    pkill -f watch
-    exit 0
-fi
+echo "Waiting for 5 seconds before restarting fluentd"
+
+sleep 5
+
+sudo docker restart fluentd_app && reset

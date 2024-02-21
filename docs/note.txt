@@ -1,0 +1,60 @@
+https://www.youtube.com/watch?v=--J_vAEVZHg
+
+https://www.youtube.com/watch?v=0U2RMbzKUCY
+
+https://www.youtube.com/watch?v=lrcQ6wT-VYs
+
+https://www.youtube.com/watch?v=tA-32BLjrFA
+
+https://www.youtube.com/watch?v=ETF6CapGAvc
+
+https://www.youtube.com/watch?v=7VAI73roXaY
+
+
+help : 
+
+https://www.youtube.com/watch?v=L2BFDyYknIg
+
+https://www.youtube.com/watch?v=Q3gLwAJ6c3Y
+
+--- Connect to mongo after exec into shell 
+
+use admin
+
+db.auth("root", "root")
+
+
+mongo log collection has this stored in it 
+
+admin> db.logs.find()
+[
+  {
+    _id: ObjectId('65d5fdae10324400105c965c'),
+    message: "parameter 'port' in <source>\n" +
+      '  @type tail\n' +
+      '  port 80\n' +
+      '  path "/var/log/nginx/access.log"\n' +
+      '  tag "nginx.access"\n' +
+      '  format nginx\n' +
+      '  <parse>\n' +
+      '    @type nginx\n' +
+      '    unmatched_lines \n' +
+      '  </parse>\n' +
+      '</source> is not used.',
+    time: ISODate('2024-02-21T13:41:55.154Z')
+  },
+  {
+    _id: ObjectId('65d5fdaf10324400105c965d'),
+    pid: 16,
+    ppid: 7,
+    worker: 0,
+    message: 'starting fluentd worker pid=16 ppid=7 worker=0',
+    time: ISODate('2024-02-21T13:41:55.154Z')
+  },
+  {
+    _id: ObjectId('65d5fdaf10324400105c965e'),
+    worker: 0,
+    message: 'fluentd worker is now running worker=0',
+    time: ISODate('2024-02-21T13:41:56.157Z')
+  }
+]

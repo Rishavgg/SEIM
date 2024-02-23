@@ -1,9 +1,9 @@
 import express  from "express";
 import mongoose from "mongoose"
 
-mongoose.set('strictQuery', true);
-const app = express()
 const port = 3001
+const app = express()
+mongoose.set('strictQuery', true);
 app.set('view engine', 'ejs');
 const conn = mongoose.connection;
 
@@ -34,6 +34,7 @@ async function main() {
       pass: "root",
     })
 }
+
 conn.on('error', console.error.bind(console, 'connection error:'));
 
 app.get("/",async (req,res) => {

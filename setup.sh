@@ -9,7 +9,7 @@ if [ "$1" = "stop" ]; then
     sudo docker compose down --rmi local
     pkill -f ./log.sh
     pkill -f watch
-    echo "${Red}clearing log files for fresh start${NC}"
+    echo "${Red}clearing log files for fresh start${NC}\n"
     truncate -s 0 ./log/nginx.log
     truncate -s 0 ./log/filter.log
     exit 0
@@ -44,8 +44,4 @@ cd ./log || exit; watch -tn1 ./filter.sh nginx.log &
 
 cd ..
 
-echo "Waiting for 5 seconds before restarting fluentd"
-
-sleep 5
-
-sudo docker restart fluentd_app && reset
+reset

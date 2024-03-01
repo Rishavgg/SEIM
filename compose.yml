@@ -29,6 +29,7 @@ services:
   fluentd:
     image: fluentd:latest
     container_name: fluentd_app
+    restart: always
     build:
       context: ./fluentd
       dockerfile: Dockerfile

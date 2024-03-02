@@ -1,5 +1,6 @@
 import express  from "express";
 import mongoose from "mongoose"
+import helmet from "helmet";
 
 const port = 3001
 const app = express()
@@ -35,6 +36,8 @@ async function main() {
 }
 
 conn.on('error', console.error.bind(console, 'connection error:'));
+
+app.use(helmet());
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

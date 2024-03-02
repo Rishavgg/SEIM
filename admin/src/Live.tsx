@@ -28,7 +28,7 @@ const ApiFetcherComponent: React.FC = () => {
       }
     };
 
-    const intervalId = setInterval(fetchApiData, 1000);
+    const intervalId = setInterval(fetchApiData, 0);
 
     return () => clearInterval(intervalId)
   }, []);
@@ -39,7 +39,7 @@ const ApiFetcherComponent: React.FC = () => {
       <ul>
         {logs.map((log) => (
           <li key={log._id}>
-            <strong>Path:</strong> {log.path}, <strong>Code:</strong> {log.code}
+            <strong>Path:</strong> {log.path} <strong>Code:</strong> {log.code} <strong>Remote:</strong> {log.remote} <strong>Host:</strong> {log.host}<strong>Method:</strong> {log.method}
           </li>
         ))}
       </ul>

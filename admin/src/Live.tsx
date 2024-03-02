@@ -28,7 +28,7 @@ const ApiFetcherComponent: React.FC = () => {
       }
     };
 
-    const intervalId = setInterval(fetchApiData, 500);
+    const intervalId = setInterval(fetchApiData, 900);
 
     return () => clearInterval(intervalId)
   }, []);

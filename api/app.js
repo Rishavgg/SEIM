@@ -4,7 +4,6 @@ import mongoose from "mongoose"
 const port = 3001
 const app = express()
 mongoose.set('strictQuery', true);
-app.set('view engine', 'ejs');
 const conn = mongoose.connection;
 
 main().catch(err => console.log(err));
@@ -37,9 +36,20 @@ async function main() {
 
 conn.on('error', console.error.bind(console, 'connection error:'));
 
-app.get("/",async (req,res) => {
-  const logs = await Log.find()
-  res.render('index', { logs })
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+app.get("/logs",async (req,res) => {
+  try{
+    const logs = await Log.find()
+    res.json(logs)
+  }catch (error) {
+    console.error('Error fetching logs:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 })
 
 app.listen(port, () => {

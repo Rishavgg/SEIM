@@ -6,6 +6,4 @@ COPY . /var/www/app/
 
 RUN npm i
 
-RUN npm run build
-
 CMD [ "npm", "run", "dev" ]

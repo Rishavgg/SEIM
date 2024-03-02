@@ -1,0 +1,125 @@
+[32mOwner has execute permission for run.sh[0m
+[32mOwner has execute permission for log.sh[0m
+[32mOwner has execute permission for filter.sh[0m
+[32mThe 'nginx_network' network already exists.
+[32mstarting server build
+#0 building with "default" instance using docker driver
+
+#1 [server internal] load build definition from Dockerfile
+#1 transferring dockerfile: 151B done
+#1 DONE 0.0s
+
+#2 [server internal] load metadata for docker.io/library/node:latest
+#2 DONE 0.0s
+
+#3 [fluentd internal] load build definition from Dockerfile
+#3 transferring dockerfile: 641B done
+#3 DONE 0.0s
+
+#4 [server internal] load .dockerignore
+#4 transferring context: 74B done
+#4 DONE 0.0s
+
+#5 [server 1/5] FROM docker.io/library/node:latest
+#5 DONE 0.0s
+
+#6 [server internal] load build context
+#6 transferring context: 3.34kB done
+#6 DONE 0.0s
+
+#7 [server 2/5] WORKDIR /var/www/app
+#7 CACHED
+
+#8 [server 3/5] COPY . /var/www/app/
+#8 CACHED
+
+#9 [server 4/5] RUN npm i
+#9 CACHED
+
+#10 [server 5/5] RUN npm run build
+#10 0.341 
+#10 0.341 > ejs-test@1.0.0 build
+#10 0.341 > tsc
+#10 0.341 
+#10 ...
+
+#11 [fluentd internal] load metadata for docker.io/fluent/fluentd:v1.16.3-debian-2.0
+#11 DONE 1.0s
+
+#12 [fluentd internal] load .dockerignore
+#12 transferring context: 2B done
+#12 DONE 0.0s
+
+#13 [fluentd 1/2] FROM docker.io/fluent/fluentd:v1.16.3-debian-2.0@sha256:001c3e81c8fed246239efcbe214d0def5591b88227d81edf9ae7007880fd5891
+#13 DONE 0.0s
+
+#14 [fluentd 2/2] RUN buildDeps="sudo make gcc g++ libc-dev ruby-dev"  && apt-get update  && apt-get install -y --no-install-recommends $buildDeps  && sudo gem install         fluent-plugin-elasticsearch fluent-plugin-mongo  && sudo gem sources --clear-all  && SUDO_FORCE_REMOVE=yes     apt-get purge -y --auto-remove                   -o APT::AutoRemove::RecommendsImportant=false                   $buildDeps  && rm -rf /var/lib/apt/lists/*            /home/fluent/.gem/ruby/2.3.0/cache/*.gem
+#14 CACHED
+
+#15 [fluentd] exporting to image
+#15 exporting layers done
+#15 writing image sha256:03082c8d9570d3aaeb6fd5b85dc3373b9126fed11e0373102f2e846ba50bc022 done
+#15 naming to docker.io/library/fluentd:latest done
+#15 DONE 0.0s
+
+#10 [server 5/5] RUN npm run build
+#10 1.206 error TS6059: File '/var/www/app/vite.config.ts' is not under 'rootDir' '/var/www/app/src'. 'rootDir' is expected to contain all source files.
+#10 1.206   The file is in the program because:
+#10 1.206     Matched by default include pattern '**/*'
+#10 1.206   File is ECMAScript module because '/var/www/app/package.json' has field "type" with value "module"
+#10 1.206 src/App.tsx(1,18): error TS2835: Relative import paths need explicit file extensions in EcmaScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean './Live.js'?
+#10 1.206 src/App.tsx(5,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+#10 1.207 src/App.tsx(6,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+#10 1.207 src/Live.tsx(1,44): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+#10 1.207 src/Live.tsx(37,5): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+#10 1.207 src/Live.tsx(37,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+#10 1.207 src/Live.tsx(38,7): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+#10 1.207 src/Live.tsx(38,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+#10 1.207 src/Live.tsx(38,24): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+#10 1.207 src/Live.tsx(39,7): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+#10 1.207 src/Live.tsx(39,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+#10 1.207 src/Live.tsx(40,20): error TS7006: Parameter 'log' implicitly has an 'any' type.
+#10 1.207 src/Live.tsx(41,11): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+#10 1.207 src/Live.tsx(41,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+#10 1.207 src/Live.tsx(42,13): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+#10 1.207 src/Live.tsx(42,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+#10 1.207 src/Live.tsx(42,26): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+#10 1.207 src/Live.tsx(42,47): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+#10 1.207 src/Live.tsx(42,47): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+#10 1.207 src/Live.tsx(42,60): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+#10 1.207 src/Live.tsx(42,81): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+#10 1.207 src/Live.tsx(42,81): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+#10 1.207 src/Live.tsx(42,96): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+#10 1.207 src/Live.tsx(42,119): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+#10 1.207 src/Live.tsx(42,119): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+#10 1.207 src/Live.tsx(42,132): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+#10 1.207 src/Live.tsx(42,152): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+#10 1.207 src/Live.tsx(42,152): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+#10 1.207 src/Live.tsx(42,167): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+#10 1.207 src/Live.tsx(43,11): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+#10 1.207 src/Live.tsx(45,7): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+#10 1.207 src/Live.tsx(46,5): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+#10 1.207 src/main.tsx(1,19): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+#10 1.207 src/main.tsx(2,22): error TS2307: Cannot find module 'react-dom/client' or its corresponding type declarations.
+#10 1.207 src/main.tsx(3,17): error TS5097: An import path can only end with a '.tsx' extension when 'allowImportingTsExtensions' is enabled.
+#10 1.207 src/main.tsx(3,17): error TS6142: Module './App.tsx' was resolved to '/var/www/app/src/App.tsx', but '--jsx' is not set.
+#10 1.207 src/main.tsx(7,3): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+#10 1.207 src/main.tsx(8,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+#10 1.207 vite.config.ts(1,30): error TS2307: Cannot find module 'vite' or its corresponding type declarations.
+#10 1.208 vite.config.ts(2,19): error TS2307: Cannot find module '@vitejs/plugin-react-swc' or its corresponding type declarations.
+#10 ERROR: process "/bin/sh -c npm run build" did not complete successfully: exit code: 1
+------
+ > [server 5/5] RUN npm run build:
+1.207 src/Live.tsx(45,7): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+1.207 src/Live.tsx(46,5): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+1.207 src/main.tsx(1,19): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+1.207 src/main.tsx(2,22): error TS2307: Cannot find module 'react-dom/client' or its corresponding type declarations.
+1.207 src/main.tsx(3,17): error TS5097: An import path can only end with a '.tsx' extension when 'allowImportingTsExtensions' is enabled.
+1.207 src/main.tsx(3,17): error TS6142: Module './App.tsx' was resolved to '/var/www/app/src/App.tsx', but '--jsx' is not set.
+1.207 src/main.tsx(7,3): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+1.207 src/main.tsx(8,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+1.207 vite.config.ts(1,30): error TS2307: Cannot find module 'vite' or its corresponding type declarations.
+1.208 vite.config.ts(2,19): error TS2307: Cannot find module '@vitejs/plugin-react-swc' or its corresponding type declarations.
+------
+[32mstarting server in deattached mode
+[?1049h[1;32r(B[m[4l[?7h[H[2J[32;162H

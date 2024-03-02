@@ -43,5 +43,3 @@ fi
 cd ./log || exit; watch -tn1 ./filter.sh nginx.log &
 
 cd ..
-
-reset

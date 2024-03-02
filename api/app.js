@@ -1,6 +1,7 @@
 import express  from "express";
 import mongoose from "mongoose"
 import helmet from "helmet";
+import cors from "cors"
 
 const port = 3001
 const app = express()
@@ -28,7 +29,7 @@ const logSchema = new mongoose.Schema({
 const Log = mongoose.model('logs', logSchema);
 
 async function main() {
-    await mongoose.connect('mongodb://root:root@localhost:27017/admin', {
+    await mongoose.connect('mongodb://root:root@mongodb:27017/admin', {
       authSource: "admin",
       user: "root",
       pass: "root",
@@ -38,12 +39,7 @@ async function main() {
 conn.on('error', console.error.bind(console, 'connection error:'));
 
 app.use(helmet());
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+app.use(cors());
 
 app.get("/logs",async (req,res) => {
   try{

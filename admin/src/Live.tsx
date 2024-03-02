@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface LogData {
   _id: string;
@@ -14,7 +14,7 @@ interface LogData {
   time: string;
 }
 
-const ApiFetcherComponent: React.FC = () => {
+export default function Live() {
   const [logs, setLogs] = useState<LogData[]>([]);
 
   useEffect(() => {
@@ -27,10 +27,8 @@ const ApiFetcherComponent: React.FC = () => {
         console.error('Error fetching API data:', error);
       }
     };
-
     const intervalId = setInterval(fetchApiData, 900);
-
-    return () => clearInterval(intervalId)
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
@@ -45,6 +43,4 @@ const ApiFetcherComponent: React.FC = () => {
       </ul>
     </div>
   );
-};
-
-export default ApiFetcherComponent;
+}

@@ -1,10 +1,19 @@
 import express  from "express";
 import mongoose from "mongoose"
 import helmet from "helmet";
-import cors from "cors"
+import cors from "cors";
+import { Server } from "socket.io";
+import { createServer } from 'node:http';
 
 const port = 3001
 const app = express()
+const server = createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: "http://admin.localhost",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  },
+});
 mongoose.set('strictQuery', true);
 const conn = mongoose.connection;
 
@@ -41,16 +50,24 @@ conn.on('error', console.error.bind(console, 'connection error:'));
 app.use(helmet());
 app.use(cors());
 
-app.get("/logs",async (req,res) => {
-  try{
-    const logs = await Log.find()
-    res.json(logs)
-  }catch (error) {
-    console.error('Error fetching logs:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-})
+io.on("connection", (socket) => {
+  console.log("Socket connected");
 
-app.listen(port, () => {
+  socket.on("disconnect", () => {
+    console.log("Socket disconnected");
+  });
+
+  socket.on("getLogs", async () => {
+    try {
+      const logs = await Log.find();
+      io.emit("logs", logs);
+    } catch (error) {
+      console.error("Error fetching logs:", error);
+    }
+  });
+});
+
+
+server.listen(port, () => {
   console.log(`server running on ${port}`)
 })

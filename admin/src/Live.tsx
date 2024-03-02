@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import io, { Socket } from 'socket.io-client';
 
 interface LogData {
   _id: string;
@@ -16,31 +17,53 @@ interface LogData {
 
 export default function Live() {
   const [logs, setLogs] = useState<LogData[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [socket, setSocket] = useState<Socket | null>(null);
 
   useEffect(() => {
-    const fetchApiData = async () => {
-      try {
-        const response = await fetch('http://localhost:3001/logs');
-        const data = await response.json();
-        setLogs(data);
-      } catch (error) {
-        console.error('Error fetching API data:', error);
-      }
+    const newSocket = io('http://localhost:3001');
+    setSocket(newSocket);
+
+    return () => {
+      newSocket.disconnect();
     };
-    const intervalId = setInterval(fetchApiData, 900);
-    return () => clearInterval(intervalId);
-  }, []);
+  }, []); 
+
+  useEffect(() => {
+    if (!socket) return;
+
+    socket.on('logs', handleLogsUpdate);
+    socket.on('logsError', (errorData: { error: string }) => {
+      setError(errorData.error);
+    });
+
+    socket.emit('getLogs');
+
+    return () => {
+      socket.off('logs', handleLogsUpdate);
+      socket.off('logsError');
+    };
+  }, [logs,socket]);
+
+  const handleLogsUpdate = (data: LogData[]) => {
+    setLogs([...data]);
+    setError(null);
+  };
 
   return (
     <div>
       <h2>Live API Data</h2>
-      <ul>
-        {logs.map((log) => (
-          <li key={log._id}>
-            <strong>Path:</strong> {log.path} <strong>Code:</strong> {log.code} <strong>Remote:</strong> {log.remote} <strong>Host:</strong> {log.host} <strong>Method:</strong> {log.method}
-          </li>
-        ))}
-      </ul>
+      {error ? (
+        <p>Error fetching logs: {error}</p>
+      ) : (
+        <ul>
+          {logs.map((log) => (
+            <li key={log._id}>
+              <strong>Path:</strong> {log.path} <strong>Code:</strong> {log.code} <strong>Remote:</strong> {log.remote} <strong>Host:</strong> {log.host} <strong>Method:</strong> {log.method}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

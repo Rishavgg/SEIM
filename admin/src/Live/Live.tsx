@@ -34,7 +34,7 @@ export default function Live(props: LiveProps) {
     }
   }, [props.logs]);
   return (
-    <div>
+    <div className="live-container">
       <h2>Live Log View</h2>
       {props.error ? (
         <p>Error fetching logs: {props.error}</p>
@@ -42,7 +42,7 @@ export default function Live(props: LiveProps) {
         <ul ref={logsRef} className="logs-list">
           {props.logs.map((log) => (
             <li key={log._id}>
-              <strong>Path:</strong> {log.path} <strong>Code:</strong> {log.code} <strong>Remote:</strong> {log.remote} <strong>Host:</strong> {log.host} <strong>Method:</strong> {log.method}
+              <strong>Path:</strong> {log.path} | <strong>Code:</strong> {log.code} | <strong>Remote:</strong> {log.remote} | <strong>Host:</strong> {log.host} | <strong>Method:</strong> {log.method} | <strong>User:</strong> {log.user} | <strong>Size:</strong> {log.size} | <strong>User-Agent:</strong> {log.agent} | <strong>Referer:</strong> {log.referer} | <strong>Time:</strong> {log.time}
             </li>
           ))}
         </ul>

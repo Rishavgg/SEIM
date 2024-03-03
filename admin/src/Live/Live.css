@@ -1,0 +1,19 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.logs-list {
+  list-style: none; 
+  padding: 0;
+}
+
+.logs-list li {
+  opacity: 0;
+  margin-bottom: 5px;
+  transition: opacity 0.3s ease;
+}

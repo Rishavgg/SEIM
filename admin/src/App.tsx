@@ -1,4 +1,4 @@
-import Live from "./Live"
+import Live from "./Live/Live"
 import { useEffect, useState } from 'react';
 import io, { Socket } from 'socket.io-client';
 
@@ -44,12 +44,13 @@ export default function App() {
       socket.off('logs', handleLogsUpdate);
       socket.off('logsError');
     };
-  }, [logs,socket]);
+  }, [logs,error,socket]);
 
   const handleLogsUpdate = (data: LogData[]) => {
     setLogs([...data]);
     setError(null);
   };
+  
   return (
     <>
       <Live logs={logs} error={error}/>

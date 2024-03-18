@@ -1,4 +1,5 @@
-# SEIM platform 
+<h1 align="center">SEIM platform</h1> 
+
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 <h2 id="scenario1"> :small_blue_diamond: Docker Compose OverView</h2>

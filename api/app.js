@@ -1,12 +1,12 @@
-import express  from "express";
+import express from "express";
 import mongoose from "mongoose"
 import helmet from "helmet";
 import cors from "cors";
 import { Server } from "socket.io";
 import { createServer } from 'node:http';
 
-const port = 3001
-const app = express()
+const port = 3001;
+const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
@@ -14,13 +14,14 @@ const io = new Server(server, {
     methods: ["GET", "POST", "PUT", "DELETE"],
   },
 });
+
 mongoose.set('strictQuery', true);
 const conn = mongoose.connection;
 
 main().catch(err => console.log(err));
 main().then(() => {
   console.log("mongo connection established");
-})
+});
 
 const logSchema = new mongoose.Schema({
   remote: String,
@@ -42,7 +43,7 @@ async function main() {
       authSource: "admin",
       user: "root",
       pass: "root",
-    })
+    });
 }
 
 conn.on('error', console.error.bind(console, 'connection error:'));
@@ -67,7 +68,6 @@ io.on("connection", (socket) => {
   });
 });
 
-
 server.listen(port, () => {
-  console.log(`server running on ${port}`)
-})
+  console.log(`server running on ${port}`);
+});

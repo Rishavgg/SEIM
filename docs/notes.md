@@ -8,3 +8,6 @@ https://docs.fluentd.org/parser/nginx
 
 - https://github.com/fluent/fluent-plugin-rewrite-tag-filter/issues/113
 
+
+
+### look into mongodb replica set and .watch() method for better deployment

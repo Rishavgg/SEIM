@@ -39,11 +39,7 @@ const logSchema = new mongoose.Schema({
 const Log = mongoose.model('logs', logSchema);
 
 async function main() {
-    await mongoose.connect('mongodb://root:root@mongodb:27017/admin', {
-      authSource: "admin",
-      user: "root",
-      pass: "root",
-    });
+    await mongoose.connect('mongodb://mongodb:27017/admin');
 }
 
 conn.on('error', console.error.bind(console, 'connection error:'));

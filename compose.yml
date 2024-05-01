@@ -1,8 +1,9 @@
 services:
   server:
-    image: node:latest
+    image: node:lts
+    restart: always
     build:
-      context: ./server
+      context: ./YelpCamp
       dockerfile: Dockerfile
     container_name: node_app
     networks:
@@ -69,9 +70,6 @@ services:
       - nginx_network
     ports:
       - 27017:27017
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
 
 networks:
   nginx_network:

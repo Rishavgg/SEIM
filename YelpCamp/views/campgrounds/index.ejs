@@ -1,0 +1,17 @@
+<% layout('layouts/boilerplate') -%>
+
+<div class=" row row-cols-1 row-cols-md-4 g-4">
+    <% for (const iterator of campground) { %>
+        <div class="column">
+        <div class="card " style="width: 18rem;">
+            <img src="<%= iterator.image %> " class="card-img-top" style="height:10rem;" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= iterator.title %></h5>
+              <p class="card-text"><%= iterator.description %></p>
+              <a href="/campground/<%= iterator._id %>" class="btn btn-primary">View Site</a>
+            </div>
+          </div>
+        </div>
+    <% } %>
+</div>
+

@@ -1,6 +1,10 @@
-import Live from "./Live/Live"
+import HttpVerbsPie from "./components/Pie/Pie";
+import Live from "./components/Live/Live"
+import Plot from "./components/plots/Plot";
 import { useEffect, useState } from 'react';
 import io, { Socket } from 'socket.io-client';
+import TimePie from "./components/Time/Time";
+import Navbar from "./components/Navbar/Navbar";
 
 interface LogData {
   _id: string;
@@ -53,7 +57,15 @@ export default function App() {
   
   return (
     <>
-      <Live logs={logs} error={error}/>
+      <Navbar />
+      <div>
+        <Live logs={logs} error={error} />
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Plot logs={logs} error={error} />
+          <TimePie logs={logs} error={error} />
+          <HttpVerbsPie logs={logs} error={error} />
+        </div>
+      </div>
     </>
   )
 }

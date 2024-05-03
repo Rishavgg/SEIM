@@ -57,6 +57,9 @@ const seedDB = async () => {
     }
 }
 
-seedDB().then(() =>{
-  conn.close();
-})
+// seedDB().then(() =>{
+//   conn.close();
+// })
+for (let i = 0; i < 10; i++) {
+  console.log(seedImg())
+}

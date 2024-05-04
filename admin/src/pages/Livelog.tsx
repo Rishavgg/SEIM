@@ -1,11 +1,33 @@
 import Navbar from "../components/Navbar/Navbar";
+import User from "../components/User/User";
 
-export default function Livelogs() {
+interface LogData {
+  _id: string;
+  remote: string;
+  host: string;
+  user: string;
+  method: string;
+  path: string;
+  code: string;
+  size: string;
+  referer: string;
+  agent: string;
+  time: string;
+}
+
+interface PlotProps {
+  logs: LogData[];
+  error: string | null;
+}
+
+const Livelogs:  React.FC<PlotProps> = ({ logs, error }) => {
   return (
     <>
     <Navbar />
-        <p>Testing Routes</p>
-        {/* Make 2 charts one for User Agents and One for route accessed and finally one return size */}
-    </>
+        <h2>Additional Information</h2>
+        <User logs={logs} error={error}/>
+    </> 
   );
 }
+
+export default Livelogs

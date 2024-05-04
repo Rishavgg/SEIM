@@ -62,7 +62,7 @@ export default function App() {
     },
     {
       path: '/livelogs',
-      element: <Livelogs />,
+      element: <Livelogs logs={logs} error={error} />,
     }
   ]);
   

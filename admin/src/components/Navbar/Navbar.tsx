@@ -32,7 +32,7 @@ export default function Navbar() {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Admin Panel lol
+              Admin Panel
             </Typography>
             <Button color="inherit">Generate Report</Button>
           </Toolbar>

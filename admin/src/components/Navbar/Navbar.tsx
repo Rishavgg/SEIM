@@ -1,4 +1,3 @@
-
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -8,8 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Drawer, List, ListItem } from '@mui/material';
 import { useState } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
-import Livelogs from '../../pages/Livelog';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -34,7 +32,7 @@ export default function Navbar() {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Admin Panel
+              Admin Panel lol
             </Typography>
             <Button color="inherit">Generate Report</Button>
           </Toolbar>
@@ -47,16 +45,17 @@ export default function Navbar() {
         >
           <List>
             <ListItem onClick={toggleDrawer}>
-              <Link to="/livelogs">Toggle Graph</Link>
+              <Link to="/livelogs" style={{ textDecoration: 'none' }}>
+                <Button variant="text" color="inherit">Toggle Graph</Button>
+              </Link>
             </ListItem>
             <ListItem onClick={toggleDrawer}>
-              <Link to="/">Admin Panel</Link>
+              <Link to="/" style={{ textDecoration: 'none' }}>
+                <Button variant="text" color="inherit">Admin Panel</Button>
+              </Link>
             </ListItem>
           </List>
         </Drawer>
-        <Routes>
-          <Route  path='/livelogs' element={ <Livelogs /> } />
-        </Routes>
       </Box>
     </>
   );

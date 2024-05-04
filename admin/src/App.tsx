@@ -1,10 +1,9 @@
-import HttpVerbsPie from "./components/Pie/Pie";
-import Live from "./components/Live/Live"
-import Plot from "./components/plots/Plot";
 import { useEffect, useState } from 'react';
 import io, { Socket } from 'socket.io-client';
-import TimePie from "./components/Time/Time";
-import Navbar from "./components/Navbar/Navbar";
+// import Navbar from "./components/Navbar/Navbar";
+import Home from "./pages/Home";
+import Livelogs from "./pages/Livelog";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 interface LogData {
   _id: string;
@@ -19,6 +18,7 @@ interface LogData {
   agent: string;
   time: string;
 }
+
 
 export default function App() {
   const [logs, setLogs] = useState<LogData[]>([]);
@@ -54,18 +54,23 @@ export default function App() {
     setLogs([...data]);
     setError(null);
   };
+
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Home logs={logs} error={error}/>,
+    },
+    {
+      path: '/livelogs',
+      element: <Livelogs />,
+    }
+  ]);
+  
   
   return (
     <>
-      <Navbar />
-      <div>
-        <Live logs={logs} error={error} />
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Plot logs={logs} error={error} />
-          <TimePie logs={logs} error={error} />
-          <HttpVerbsPie logs={logs} error={error} />
-        </div>
-      </div>
+      
+      <RouterProvider router={router} />
     </>
   )
 }

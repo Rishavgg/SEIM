@@ -35,7 +35,7 @@ const Plot: React.FC<PlotProps> = ({ logs, error }) => {
   }));
 
   return (
-    <div>
+    <div className="pdf-element">
       {error && <div>Error: {error}</div>}
       <LineChart
         width={800}

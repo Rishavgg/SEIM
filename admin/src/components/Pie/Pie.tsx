@@ -45,7 +45,7 @@ const HttpVerbsPie: React.FC<HttpVerbsPieProps> = ({ logs, error }) => {
   }));
 
   return (
-    <div>
+    <div className="pdf-element">
       {error && <div>Error: {error}</div>}
       <PieChart width={400} height={400}>
         <Pie data={data} dataKey="value" cx="50%" cy="50%" outerRadius={80} fill="#8884d8" label />

@@ -67,7 +67,7 @@ const TimePie: React.FC<TimePieProps> = ({ logs, error }) => {
   }));
 
   return (
-    <div>
+    <div className="pdf-element">
       {error && <div>Error: {error}</div>}
       <PieChart width={400} height={400}>
         <Pie data={data} dataKey="count" cx="50%" cy="50%" outerRadius={80} label />

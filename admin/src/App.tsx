@@ -3,7 +3,6 @@ import io, { Socket } from 'socket.io-client';
 import Home from "./pages/Home";
 import Livelogs from "./pages/Livelog";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
 interface LogData {
   _id: string;
   remote: string;
@@ -17,7 +16,6 @@ interface LogData {
   agent: string;
   time: string;
 }
-
 
 export default function App() {
   const [logs, setLogs] = useState<LogData[]>([]);
@@ -68,7 +66,6 @@ export default function App() {
   
   return (
     <>
-      
       <RouterProvider router={router} />
     </>
   )

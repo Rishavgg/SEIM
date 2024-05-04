@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import io, { Socket } from 'socket.io-client';
-// import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
 import Livelogs from "./pages/Livelog";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";

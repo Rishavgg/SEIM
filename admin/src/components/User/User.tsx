@@ -48,7 +48,7 @@ const User: React.FC<PlotProps> = ({ logs, error }) => {
   const data = prepareData(browserCounts);
 
   return (
-    <div>
+    <div className='pdf-element'>
       {error && <div>Error: {error}</div>}
       <LineChart
         width={800}

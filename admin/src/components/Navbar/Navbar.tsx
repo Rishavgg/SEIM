@@ -27,45 +27,47 @@ export default function Navbar() {
 
     const promises: Promise<string>[] = []; // Explicitly define the type of promises array
 
+    const xPosition = 10;
+    let yPosition = 30; // Adjust Y position based on your needs
+
     elements.forEach(element => {
-      const chartSVG = element.querySelector('svg');
-      if (chartSVG) {
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
+        const chartSVG = element.querySelector('svg');
+        if (chartSVG) {
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
 
-        if (context) { // Check if context is not null
-          const { width, height } = chartSVG.getBoundingClientRect();
-          canvas.width = width;
-          canvas.height = height;
+            if (context) { // Check if context is not null
+                const { width, height } = chartSVG.getBoundingClientRect();
+                canvas.width = width;
+                canvas.height = height;
 
-          const svgString = new XMLSerializer().serializeToString(chartSVG);
+                const svgString = new XMLSerializer().serializeToString(chartSVG);
 
-          const img = new Image();
-          const svgBlob = new Blob([svgString], { type: 'image/svg+xml' });
-          const DOMURL = window.URL || window.webkitURL || window;
-          const url = DOMURL.createObjectURL(svgBlob);
+                const img = new Image();
+                const svgBlob = new Blob([svgString], { type: 'image/svg+xml' });
+                const DOMURL = window.URL || window.webkitURL || window;
+                const url = DOMURL.createObjectURL(svgBlob);
 
-          promises.push(new Promise(resolve => {
-            img.onload = function () {
-              context.drawImage(img, 0, 0);
-              DOMURL.revokeObjectURL(url);
-              resolve(canvas.toDataURL('image/png'));
-            };
-            img.src = url;
-          }));
+                promises.push(new Promise(resolve => {
+                    img.onload = function () {
+                        context.drawImage(img, 0, 0);
+                        DOMURL.revokeObjectURL(url);
+                        const imageData = canvas.toDataURL('image/png');
+                        doc.addImage(imageData, 'PNG', xPosition, yPosition, width / 4, height / 4); // Adjust dimensions as needed
+                        yPosition += height / 4 + 10; // Adjust spacing between images
+                        resolve(imageData);
+                    };
+                    img.src = url;
+                }));
+            }
         }
-      }
     });
 
-    Promise.all(promises).then(images => {
-      images.forEach(image => {
-        doc.addImage(image, 'PNG', 10, 10, 100, 100); // Adjust coordinates and dimensions as needed
-        doc.addPage();
-      });
-
-      doc.save('security_analysis.pdf');
+    Promise.all(promises).then(() => {
+        doc.save('security_analysis.pdf');
     });
 };
+
 
   return (
     <>

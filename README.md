@@ -24,7 +24,9 @@ chmod +X setup.sh \
 
 ## Usage/Examples
 
-Visit [`localhost`](http://localhost) to view the demo site and visit [`admin.localhost`](http://admin.localhost) to get access to the admin panel after running the start-up script, to view live analytics and alerts about attacks happening on the demo site
+Visit [`localhost`](http://localhost) to view the demo site and visit [`admin.localhost`](http://admin.localhost) to get access to the admin panel after running the start-up script, to view live analytics and alerts about attacks happening on the demo site.
+
+To Stop the project run the setup script with the stop argument `./setup.sh stop`
 
 <h2 id="scenario1"> :small_blue_diamond: Docker Compose OverView</h2>
 <img alt="compose.yml" src="images/Compose.yml.png" />

@@ -2,10 +2,12 @@
 
 import pandas as pd
 import pickle
+import warnings
 from sklearn.compose import ColumnTransformer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.preprocessing import OneHotEncoder
-
+from sklearn.exceptions import InconsistentVersionWarning 
+warnings.filterwarnings("ignore", category=InconsistentVersionWarning)
 # Load the trained unsupervised model
 with open('best_model.pkl', 'rb') as f:
     model = pickle.load(f)

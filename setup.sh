@@ -42,6 +42,8 @@ fi
 
 cd ./log || exit; watch -tn1 ./filter.sh nginx.log &
 
-reset 
+cd ../pipe || exit; watch -tn60 ./copy.sh &
+
+reset
 
 cd ..

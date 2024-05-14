@@ -70,6 +70,15 @@ services:
       - nginx_network
     ports:
       - 27017:27017
+  pipe:
+    container_name: pipe_app
+    build:
+      context: ./pipe
+      dockerfile: Dockerfile
+    networks:
+      - nginx_network
+    volumes:
+      - ./log/nginx.log:/nginx.log
 
 networks:
   nginx_network:

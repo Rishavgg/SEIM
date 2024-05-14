@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import pandas as pd
+import sched
+import time
 import pickle
 import warnings
 from sklearn.compose import ColumnTransformer
@@ -47,25 +49,28 @@ def detect_anomalies(testing_data):
     anomalies = model.fit_predict(processed_testing_data)
     return anomalies, testing_df['IP']
 
-# Read Excel file using Python open command
-file_path = 'log_data.xlsx'
-anomalies, ip_addresses = detect_anomalies(file_path)
+def main():
+    # Read Excel file using Python open command
+    file_path = 'log_data.xlsx'
+    anomalies, ip_addresses = detect_anomalies(file_path)
+    # Write output to a text file
+    output_file_path = 'output.txt'
+    with open(output_file_path, 'w') as file:
+        anomaly_counts = {'Yes': 0, 'No': 0}
+        for i, anomaly_label in enumerate(anomalies):
+            if anomaly_label == -1:
+                anomaly_counts['Yes'] += 1
+            else:
+                anomaly_counts['No'] += 1
 
-# Write output to a text file
-output_file_path = 'output1.txt'
-with open(output_file_path, 'w') as file:
-    file.write('Anomalies Detected:\n')
-    anomaly_counts = {'Yes': 0, 'No': 0}
-    for i, anomaly_label in enumerate(anomalies):
-        if anomaly_label == -1:
-            anomaly_counts['Yes'] += 1
+        if anomaly_counts['Yes'] > anomaly_counts['No']:
+            not_anomaly_ip = ip_addresses.iloc[0]
+            file.write(f"IP Address {not_anomaly_ip} is 'not anomaly'\n")
         else:
-            anomaly_counts['No'] += 1
+            anomaly_ip = ip_addresses.iloc[0]
+            file.write(f"IP Address {anomaly_ip} is 'anomaly'\n")
 
-    if anomaly_counts['Yes'] > anomaly_counts['No']:
-        not_anomaly_ip = ip_addresses.iloc[0]
-        file.write(f"IP Address {not_anomaly_ip} is 'not anomaly'.\n")
-    else:
-        anomaly_ip = ip_addresses.iloc[0]
-        file.write(f"IP Address {anomaly_ip} is 'anomaly'.\n")
-
+if __name__=="__main__":
+    scheduler = sched.scheduler(time.time, time.sleep)
+    scheduler.enter(40, 1, main)
+    scheduler.run()

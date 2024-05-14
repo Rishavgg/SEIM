@@ -25,7 +25,7 @@ def main():
     df = parse_log_file(log_file)
     output_file = "log_data.xlsx"
     df.to_excel(output_file, index=False)
-    scheduler.enter(60, 1, main)
+    scheduler.enter(30, 1, main)
 
 if __name__ == "__main__":
     scheduler = sched.scheduler(time.time, time.sleep)

@@ -79,6 +79,16 @@ services:
       - nginx_network
     volumes:
       - ./log/nginx.log:/nginx.log
+  model:
+    container_name: model_app
+    restart: always
+    build:
+      context: ./guard
+      dockerfile: Dockerfile
+    networks:
+      - nginx_network
+    volumes:
+      - ./pipe/log_data.xlsx:/log_data.xlsx
 
 networks:
   nginx_network:

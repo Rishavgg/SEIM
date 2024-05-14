@@ -1,0 +1,91 @@
+[32mOwner has execute permission for run.sh[0m
+[32mOwner has execute permission for log.sh[0m
+[32mOwner has execute permission for filter.sh[0m
+[32mThe 'nginx_network' network already exists.
+[32mstarting server build
+#0 building with "default" instance using docker driver
+
+#1 [fluentd internal] load build definition from Dockerfile
+#1 transferring dockerfile: 641B done
+#1 DONE 0.0s
+
+#2 [server internal] load build definition from Dockerfile
+#2 transferring dockerfile: 129B done
+#2 DONE 0.0s
+
+#3 [server internal] load metadata for docker.io/library/node:lts
+#3 ERROR: failed to authorize: failed to fetch anonymous token: Get "https://auth.docker.io/token?scope=repository%3Alibrary%2Fnode%3Apull&service=registry.docker.io": tls: failed to verify certificate: x509: certificate signed by unknown authority
+
+#4 [fluentd internal] load metadata for docker.io/fluent/fluentd:v1.16.3-debian-2.0
+#4 ERROR: failed to authorize: failed to fetch anonymous token: Get "https://auth.docker.io/token?scope=repository%3Afluent%2Ffluentd%3Apull&service=registry.docker.io": tls: failed to verify certificate: x509: certificate signed by unknown authority
+
+#5 [admin internal] load build definition from Dockerfile
+#5 transferring dockerfile: 156B done
+#5 DONE 0.0s
+
+#6 [admin internal] load metadata for docker.io/library/node:latest
+#6 CANCELED
+
+#7 [model internal] load build definition from Dockerfile
+#7 transferring dockerfile: 169B done
+#7 DONE 0.0s
+
+#8 [pipe internal] load build definition from Dockerfile
+#8 transferring dockerfile: 271B done
+#8 DONE 0.1s
+
+#9 [api internal] load build definition from Dockerfile
+#9 transferring dockerfile: 132B done
+#9 DONE 0.1s
+
+#10 [pipe internal] load metadata for docker.io/library/python:latest
+#10 CANCELED
+------
+ > [server internal] load metadata for docker.io/library/node:lts:
+------
+------
+ > [fluentd internal] load metadata for docker.io/fluent/fluentd:v1.16.3-debian-2.0:
+------
+[32mstarting server in deattached mode
+#0 building with "default" instance using docker driver
+
+#1 [api internal] load build definition from Dockerfile
+#1 transferring dockerfile: 132B done
+#1 DONE 0.0s
+
+#2 [model internal] load build definition from Dockerfile
+#2 transferring dockerfile: 169B done
+#2 DONE 0.0s
+
+#3 [model internal] load metadata for docker.io/library/python:latest
+#3 ERROR: failed to authorize: failed to fetch anonymous token: Get "https://auth.docker.io/token?scope=repository%3Alibrary%2Fpython%3Apull&service=registry.docker.io": tls: failed to verify certificate: x509: certificate signed by unknown authority
+
+#4 [api internal] load metadata for docker.io/library/node:latest
+#4 ERROR: failed to authorize: failed to fetch anonymous token: Get "https://auth.docker.io/token?scope=repository%3Alibrary%2Fnode%3Apull&service=registry.docker.io": tls: failed to verify certificate: x509: certificate signed by unknown authority
+
+#5 [pipe internal] load build definition from Dockerfile
+#5 transferring dockerfile: 271B done
+#5 DONE 0.0s
+
+#6 [admin internal] load build definition from Dockerfile
+#6 transferring dockerfile: 156B done
+#6 DONE 0.1s
+
+#7 [fluentd internal] load build definition from Dockerfile
+#7 transferring dockerfile: 641B done
+#7 DONE 0.1s
+
+#8 [server internal] load build definition from Dockerfile
+#8 transferring dockerfile: 129B done
+#8 CANCELED
+
+#9 [fluentd internal] load metadata for docker.io/fluent/fluentd:v1.16.3-debian-2.0
+#9 CANCELED
+
+#3 [pipe internal] load metadata for docker.io/library/python:latest
+#3 CANCELED
+------
+ > [api internal] load metadata for docker.io/library/node:latest:
+------
+[?1049h[1;40r(B[m[4l[?7h[H[2J[40;192H\033[0;31mNo NGINX container found.
+[?1049h[1;40r(B[m[4l[?7h[H[2JError: model_app container not found.[40;192H[?1049h[1;40r(B[m[4l[?7h[H[2JError: pipe_app container not found.[40;192H

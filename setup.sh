@@ -42,7 +42,9 @@ fi
 
 cd ./log || exit; watch -tn1 ./filter.sh nginx.log &
 
-cd ../pipe || exit; watch -tn60 ./copy.sh &
+cd ../pipe || exit; watch -tn5 ./copy.sh &
+
+cd ../guard || exit; watch -tn5 ./answer.sh &
 
 reset
 

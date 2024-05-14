@@ -10,5 +10,3 @@ fi
 
 # Copy log_data.xlsx file from the container to the pipe directory
 sudo docker cp "$container_id":/log_data.xlsx .
-
-echo "log_data.xlsx file copied successfully to the pipe directory."

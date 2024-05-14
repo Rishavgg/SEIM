@@ -1,11 +1,9 @@
-FROM node:latest
+FROM node:lts
 
 WORKDIR /var/www/app
 
 COPY . /var/www/app/
 
 RUN npm i
-
-RUN npm run build
 
 CMD [ "npm", "start" ]

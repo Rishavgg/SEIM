@@ -3,7 +3,7 @@ services:
     image: node:lts
     restart: always
     build:
-      context: ./YelpCamp
+      context: ./server
       dockerfile: Dockerfile
     container_name: node_app
     networks:

@@ -37,16 +37,22 @@ const readAndCheckFile = (filePath) => {
     });
 };
 
-const sendFileContents = () => {
-    readAndCheckFile(FILE_PATH)
-        .then((fileContents) => {
-            io.emit('fileContents', fileContents);
-        })
-        .catch((error) => {
-            io.emit('fileError', error);
-        });
-};
+let isFileContentSent = false;
 
+const sendFileContents = () => {
+    if (!isFileContentSent) {
+        readAndCheckFile(FILE_PATH)
+            .then((fileContents) => {
+                if (!isFileContentSent) {
+                    io.emit('fileContents', fileContents);
+                    isFileContentSent = true; // Set flag to true after sending content
+                }
+            })
+            .catch((error) => {
+                io.emit('fileError', error);
+            });
+    }
+};
 // Watch file for changes
 fs.watch(FILE_PATH, (event, filename) => {
     if (event === 'change') {

@@ -63,12 +63,12 @@ def main():
             else:
                 anomaly_counts['No'] += 1
 
-        if anomaly_counts['Yes'] > anomaly_counts['No']:
+        if anomaly_counts['Yes'] >= anomaly_counts['No']:
             not_anomaly_ip = ip_addresses.iloc[0]
-            file.write(f"IP Address {not_anomaly_ip} is 'not anomaly'\n")
+            file.write(f"IP Address {not_anomaly_ip} is not anomaly\n")
         else:
             anomaly_ip = ip_addresses.iloc[0]
-            file.write(f"IP Address {anomaly_ip} is 'anomaly'\n")
+            file.write(f"IP Address {anomaly_ip} is anomalyx\n")
 
 if __name__=="__main__":
     scheduler = sched.scheduler(time.time, time.sleep)

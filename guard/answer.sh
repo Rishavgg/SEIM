@@ -9,3 +9,4 @@ fi
 
 # Copy log_data.xlsx file from the container to the pipe directory
 sudo docker cp "$container_id":/output.txt .
+sudo chmod 777 output.txt

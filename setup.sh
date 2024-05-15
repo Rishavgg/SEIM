@@ -46,6 +46,6 @@ cd ../pipe || exit; watch -tn5 ./copy.sh &
 
 cd ../guard || exit; watch -tn5 ./answer.sh &
 
-reset
+cd ../ || exit; watch -tn5 ./sol.sh &
 
-cd ..
+reset

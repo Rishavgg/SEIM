@@ -89,6 +89,17 @@ services:
       - nginx_network
     volumes:
       - ./pipe/log_data.xlsx:/log_data.xlsx
+  ci:
+    container_name: ci_app
+    build:
+      context: ./ci
+      dockerfile: Dockerfile
+    networks:
+      - nginx_network
+    ports:
+      - 3002:3002
+    volumes:
+      - ./guard/output.txt:/var/www/app/output.txt
 
 networks:
   nginx_network:

@@ -2,4 +2,7 @@
 - [x] and more graphs to /livelogs routes
 - [x] added attack script in bash/python3
 - [ ] work on better report generation
-- [ ] integrate ML Model
+- [x] integrate ML Model
+- [ ] Add GDrive link to model in README
+- [ ] work on API endpoint
+- [ ] Added React Flash

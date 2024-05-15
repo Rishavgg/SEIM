@@ -68,7 +68,7 @@ def main():
             file.write(f"IP Address {not_anomaly_ip} is not anomaly\n")
         else:
             anomaly_ip = ip_addresses.iloc[0]
-            file.write(f"IP Address {anomaly_ip} is anomalyx\n")
+            file.write(f"IP Address {anomaly_ip} is suspicious\n")
 
 if __name__=="__main__":
     scheduler = sched.scheduler(time.time, time.sleep)

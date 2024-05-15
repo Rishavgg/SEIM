@@ -28,7 +28,7 @@ const readAndCheckFile = (filePath) => {
             const lines = data.split('\n');
             const firstLineWords = lines[0].trim().split(' ');
             const lastWord = firstLineWords[firstLineWords.length - 1];
-            if (lastWord === 'anomalyx') {
+            if (lastWord === 'suspicious') {
                 resolve(lines.join('\n'));
             } else {
                 return 

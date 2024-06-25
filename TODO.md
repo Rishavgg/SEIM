@@ -4,5 +4,5 @@
 - [ ] work on better report generation
 - [x] integrate ML Model
 - [ ] Add GDrive link to model in README
-- [ ] work on API endpoint
-- [ ] Added React Flash
+- [x] work on API endpoint
+- [x] Added React Flash

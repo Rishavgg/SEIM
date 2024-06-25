@@ -7,7 +7,7 @@ SEIM is a custom log monitoring and filtering solution that is built using Docke
 
 #### Note
 This repository only contains the architecture and the analysis code for the platform, not the code related to AI model. The model and its functionality are exposed using an API endpoint. 
-The best_model.pkl file is the model for the detection is not included in this git repo, but it can be download for this [Drive]()
+The best_model.pkl file is the model for the detection is not included in this git repo, but it can be download for this [Drive](https://drive.google.com/file/d/1eFBOXEAs12yjRCZgUEii3ris66njeQpt/view?usp=sharing)
 
 ## Model
 The Model for the detection can be download [here](https://drive.google.com/file/d/1eFBOXEAs12yjRCZgUEii3ris66njeQpt/view?usp=sharing) and should be placed in the [guard](guard) directory

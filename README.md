@@ -3,7 +3,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/snowkluster/SEIM)  [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 
-SEIM is a custom log monitoring and filtering solution that is built using Docker, It allows visualizing data from multiple sources and generate PDF reports to be shared. It is based on my research done on SIEM platforms like wazuh and Splunk. It can also connect to different AI models to detect threats in real time.
+SEIM is a custom log monitoring and analysis solution that is built using Docker, It allows visualizing data from multiple sources and generate PDF reports to be shared. It is based on my research done on SIEM platforms like wazuh and Splunk. It can also connect to different AI models to detect threats in real time. SEIM can be used to detect DDOS and DOS attacks on a site and provide an incident report of the following.
 
 #### Note
 This repository only contains the architecture and the analysis code for the platform, not the code related to AI model. The model and its functionality are exposed using an API endpoint. 

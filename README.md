@@ -33,11 +33,11 @@ Visit [`localhost`](http://localhost) to view the demo site and visit [`admin.lo
 To Stop the project run the setup script with the stop argument `./setup.sh stop`
 
 <h2 id="scenario1"> :small_blue_diamond: Docker Compose OverView</h2>
-<img alt="compose.yml" src="images/Compose.yml.png" />
+<img alt="compose.yml" src="images/final_design.png" />
 
 <h2 id="scenario1"> :small_blue_diamond: User Data Workflow</h2>
 
-<img alt="workflow" src="images/workflow.png" />
+<img alt="workflow" src="images/flow.png" />
 
 
 
